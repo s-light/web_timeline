@@ -75,8 +75,13 @@ module.exports = {
         contentBase: './dist'
     },
     output: {
-        filename: 'main.js',
+        filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        },
     },
     plugins: my_plugins,
     module: {rules: my_rules},
