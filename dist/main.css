@@ -1,0 +1,19 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0; }
+
+body {
+  background-color: #ffff33; }
+
+section {
+  color: #ffaa00;
+  transition: color 0.5s; }
+
+section:hover {
+  color: #2b00ff;
+  transition: color 0.5s; }
+
+
+/*# sourceMappingURL=main.css.map*/

@@ -1,6 +1,11 @@
 'use strict';
+
+import './style.scss';
+
+
 import moment from 'moment';
-// import './style.css';
+
+
 
 
 window.addEventListener('load', function(event) {
@@ -20,6 +25,6 @@ function showNow() {
         const el_body = document.querySelector('body');
         el_body.prepend(el);
     }
-    el.textContent = moment().format('DD.MM.YYYY H:mm:ss');
+    el.textContent = moment().format('DD.MM.YYYY HH:mm:ss');
     console.groupEnd();
 }
