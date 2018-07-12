@@ -1,3 +1,23 @@
+
+# ------------------------------------------
+# project specific
+# for documents that are not allowed to be synced..
+no_sync
+temp_no_sync
+# for old outdated things
+old*
+# for zip backups:
+backup
+
+
+# ------------------------------------------
+# Jekyll
+_site
+
+
+# ------------------------------------------
+# node
+
 # Logs
 logs
 *.log

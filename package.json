@@ -2,12 +2,29 @@
   "name": "web_timeline",
   "version": "0.1.0",
   "description": "a simple single page & self contained web application to visualize time and date related events & periods in a timeline",
-  "main": "index.js",
+  "keywords": [
+    "html",
+    "js",
+    "single-page-app",
+    "self-contained",
+    "timeline",
+    "vita",
+    "svg"
+  ],
+  "private": true,
   "repository": "git@github.com:s-light/web_timeline.git",
   "author": "s-light <github@s-light.eu>",
   "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "start": "webpack-serve --open",
+    "build": "webpack"
+  },
   "devDependencies": {
-    "webpack": "^4.16.0"
+    "webpack": "^4.16.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-serve": "^2.0.2"
   },
   "dependencies": {
     "moment": "^2.22.2"
