@@ -1,0 +1,10 @@
+
+section {
+    color: hsla(50, 100%, 50%, 1);
+    transition: color 0.5s;
+}
+
+section:hover {
+    color: hsla(250, 100%, 50%, 1);
+    transition: color 0.5s;
+}
