@@ -3,7 +3,7 @@
 import './navigation.css';
 
 export default function init() {
-    console.group('navigation');
+    console.groupCollapsed('navigation');
     const nav_el = document.querySelector('header > nav > ul');
     console.log('nav_el', nav_el);
     if (nav_el) {
