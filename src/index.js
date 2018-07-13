@@ -1,30 +1,34 @@
 'use strict';
 
-import './style.scss';
+import './index.css';
 
 
 import moment from 'moment';
+
+
+import init from './navigation.js';
 
 
 
 
 window.addEventListener('load', function(event) {
     showNow();
+    init();
 });
 
 function showNow() {
     console.group('show Now');
-    let result = '';
-    let el = document.querySelector('#now');
-    console.log('el', el);
-    if (!el) {
-        console.log('create new section element');
-        el = document.createElement('section');
-        el.id = 'now';
-        console.log('el', el);
-        const el_body = document.querySelector('body');
-        el_body.prepend(el);
+    const timeline_el = document.querySelector('#timeline');
+    // console.log('timeline_el', timeline_el);
+    if (timeline_el) {
+        let now_el = timeline_el.querySelector('#now');
+        if (!now_el) {
+            now_el = document.createElement('section');
+            now_el.id = 'now';
+            console.log('now_el', now_el);
+            timeline_el.append(now_el);
+        }
+        now_el.textContent = moment().format('DD.MM.YYYY HH:mm:ss');
     }
-    el.textContent = moment().format('DD.MM.YYYY HH:mm:ss');
     console.groupEnd();
 }

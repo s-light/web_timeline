@@ -8,15 +8,15 @@ html, body {
 
 body {
     background-color: hsl(60, 100%, 60%);
-    // background-color: hsla(60, 70%, 60%, 1);
+    /* background-color: hsla(60, 70%, 60%, 1); */
 }
 
 section {
-    color: hsla(40, 100%, 50%, 1);
+    color: hsla(40, 100%, 0%, 1);
     transition: color 0.5s;
 }
 
 section:hover {
-    color: hsla(250, 100%, 50%, 1);
+    color: hsla(200, 100%, 50%, 1);
     transition: color 0.5s;
 }

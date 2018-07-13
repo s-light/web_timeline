@@ -31,33 +31,33 @@ const my_plugins = [
 ];
 
 const my_rules = [
-    // {
-    //     test: /\.css$/,
-    //     use: [
-    //         {
-    //             loader: 'style-loader',
-    //             options: {
-    //                 sourceMap: true
-    //             }
-    //         },
-    //         'css-loader',
-    //         // { loader: 'style-loader/url', },
-    //         // { loader: 'file-loader' },
-    //     ]
-    // },
     {
         test: /\.css$/,
-        use: [{
-            loader: MiniCssExtractPlugin.loader
-        }, {
-            loader: 'css-loader',
-            options: {
-                sourceMap: true
-            }
-        }, {
-            loader: 'file-loader'
-        }],
+        use: [
+            {
+                loader: 'style-loader',
+                options: {
+                    sourceMap: true
+                }
+            },
+            'css-loader',
+            // { loader: 'style-loader/url', },
+            // { loader: 'file-loader' },
+        ]
     },
+    // {
+    //     test: /\.css$/,
+    //     use: [{
+    //         loader: MiniCssExtractPlugin.loader
+    //     }, {
+    //         loader: 'css-loader',
+    //         options: {
+    //             sourceMap: true
+    //         }
+    //     }, {
+    //         loader: 'file-loader'
+    //     }],
+    // },
     {
         test: /\.scss$/,
         use: [{

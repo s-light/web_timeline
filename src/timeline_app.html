@@ -9,16 +9,27 @@
     <header>
         <nav class="menu">
             <ul>
-                <li><a href="#">edit</a></li>
-                <li><a href="#">timeline</a></li>
-                <li><a href="#">list</a></li>
+                <li data-target_id="editor">editor</li>
+                <li data-target_id="timeline">timeline</li>
+                <li data-target_id="list">list</li>
             </ul>
         </nav>
     </header>
-    <section>
+    <section id="editor" class="">
+        <h1>editor</h1>
         there are things to do here ;-)
     </section>
-    <section id="now">
+    <section id="timeline" class="full-view hidden">
+        <h1>Timeline</h1>
+        <svg version="1.1"
+            baseProfile="full"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <g></g>
+        </svg>
+    </section>
+    <section id="list" class="hidden">
+        <h1>List</h1>
     </section>
 
     <!-- here at the end webpack will add the scripts -->
