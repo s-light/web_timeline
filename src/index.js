@@ -6,6 +6,7 @@ import './fancy_background.css';
 import navigation_init from './navigation.js';
 import * as timeline_module from './timeline.js';
 import * as editor_module from './editor.js';
+import * as listview_module from './listview.js';
 
 
 
@@ -20,9 +21,9 @@ window.addEventListener('load', function() {
     };
     window.debug_data = data;
 
-    const parent_timeline_el = document.querySelector('#timeline');
-    // const my_timeline = new timeline_module.TimeLine(data, parent_timeline_el);
-    new timeline_module.TimeLine(data, parent_timeline_el);
+    const timeline_el = document.querySelector('#timeline');
+    // const my_timeline = new timeline_module.TimeLine(data, timeline_el);
+    new timeline_module.TimeLine(data, timeline_el);
 
 
     const raw_data_format_input_el = document.querySelector('#raw_data_format_input');
@@ -37,13 +38,20 @@ window.addEventListener('load', function() {
     );
     new editor_module.TextAreaWithLineNumbers(text_input_el);
 
-    document.addEventListener(
-        my_rawparser.data_update_event_name,
-        (event) => {
-            console.log(event);
-        }
+    const listview_el = document.querySelector('#listview');
+    new listview_module.ListView(
+        data,
+        listview_el,
+        my_rawparser.data_update_event_name
     );
-    console.log(my_rawparser.data_update_event_name);
+
+    // document.addEventListener(
+    //     my_rawparser.data_update_event_name,
+    //     (event) => {
+    //         console.log(event);
+    //     }
+    // );
+    // console.log(my_rawparser.data_update_event_name);
 
 });
 
