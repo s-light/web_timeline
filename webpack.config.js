@@ -19,7 +19,7 @@ const my_plugins = [
         template: './src/timeline_app.html',
         // embed all javascript and css inline
         // inlineSource: '.(js|css)$',
-        alwaysWriteToDisk: true,
+        alwaysWriteToDisk: false,
     }),
     new HtmlWebpackHarddiskPlugin(),
     new HtmlWebpackInlineSourcePlugin(),
@@ -29,7 +29,7 @@ const my_plugins = [
         filename: '[name].css',
         chunkFilename: '[id].css'
     }),
-    new CleanWebpackPlugin(['dist']),
+    // new CleanWebpackPlugin(['dist']),
 ];
 
 const my_rules = [
