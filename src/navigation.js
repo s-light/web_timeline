@@ -32,10 +32,10 @@ function toggleView(event, target_el) {
     // console.log(event);
     for (const el of document.querySelectorAll('.nav_toggle')) {
         if (el === target_el) {
-            el.classList.remove('nav_toggle-hidden');
+            el.classList.remove('hidden');
         }
         else {
-            el.classList.add('nav_toggle-hidden');
+            el.classList.add('hidden');
         }
     }
 }
