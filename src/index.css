@@ -16,14 +16,14 @@ body {
 
 
 section {
-    color: hsla(40, 100%, 0%, 1);
+    color: hsla(122, 100%, 0%, 1);
     transition: color 0.5s;
 }
 
-section:hover {
-    color: hsla(200, 100%, 50%, 1);
+/* section:hover {
+    color: hsla(122, 100%, 50%, 1);
     transition: color 0.5s;
-}
+} */
 
 .full-view {
     position: absolute;

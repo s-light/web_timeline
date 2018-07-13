@@ -15,19 +15,36 @@ window.addEventListener('load', function() {
     console.log('init application');
     navigation_init();
 
-    let data = {} ;
+    let data = {
+        entries: [],
+    };
+    window.debug_data = data;
 
     const parent_timeline_el = document.querySelector('#timeline');
-    const my_timeline = new timeline_module.TimeLine(data, parent_timeline_el);
+    // const my_timeline = new timeline_module.TimeLine(data, parent_timeline_el);
+    new timeline_module.TimeLine(data, parent_timeline_el);
+
+
+    const raw_data_format_input_el = document.querySelector('#raw_data_format_input');
     const text_input_el = document.querySelector('#raw_data_input');
-    const bt_parse = document.querySelector('#bt_parse');
-    const my_rawparser = new editor_module.RawParser(data, text_input_el);
-    bt_parse.addEventListener(
-        'click',
-        event => {
-            my_rawparser.parse();
+    const data_json_el = document.querySelector('#data_json');
+    // new editor_module.RawParser(
+    const my_rawparser = new editor_module.RawParser(
+        data,
+        text_input_el,
+        raw_data_format_input_el,
+        data_json_el
+    );
+    new editor_module.TextAreaWithLineNumbers(text_input_el);
+
+    document.addEventListener(
+        my_rawparser.data_update_event_name,
+        (event) => {
+            console.log(event);
         }
     );
+    console.log(my_rawparser.data_update_event_name);
+
 });
 
 // function showNow() {
