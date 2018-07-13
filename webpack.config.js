@@ -9,8 +9,9 @@ const HtmlWebpackInlineSourcePlugin = require(
 // https://github.com/thegc/html-webpack-inline-svg-plugin
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-// const devMode = process.env.NODE_ENV !== 'production';
+const devMode = process.env.NODE_ENV !== 'production';
 
 
 const my_plugins = [
@@ -28,18 +29,23 @@ const my_plugins = [
         filename: '[name].css',
         chunkFilename: '[id].css'
     }),
+    new CleanWebpackPlugin(['dist']),
 ];
 
 const my_rules = [
     {
         test: /\.css$/,
         use: [
+            // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
             {
-                loader: 'style-loader',
-                options: {
-                    sourceMap: true
-                }
+                loader: MiniCssExtractPlugin.loader
             },
+            // {
+            //     loader: 'style-loader',
+            //     options: {
+            //         sourceMap: true
+            //     }
+            // },
             'css-loader',
             // { loader: 'style-loader/url', },
             // { loader: 'file-loader' },

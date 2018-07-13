@@ -17,12 +17,13 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "webpack --watch",
-    "start": "webpack-serve --open",
-    "serve": "webpack-serve",
-    "build": "webpack"
+    "watch": "webpack --watch --progress",
+    "start": "webpack-serve --progress --open",
+    "serve": "webpack-serve --progress",
+    "build": "webpack --progress --mode='production'"
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "eslint": "^5.1.0",
     "extract-loader": "^2.0.1",
