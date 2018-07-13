@@ -10,7 +10,7 @@ const HtmlWebpackInlineSourcePlugin = require(
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const devMode = process.env.NODE_ENV !== 'production';
+// const devMode = process.env.NODE_ENV !== 'production';
 
 
 const my_plugins = [
@@ -46,6 +46,19 @@ const my_rules = [
     //     ]
     // },
     {
+        test: /\.css$/,
+        use: [{
+            loader: MiniCssExtractPlugin.loader
+        }, {
+            loader: 'css-loader',
+            options: {
+                sourceMap: true
+            }
+        }, {
+            loader: 'file-loader'
+        }],
+    },
+    {
         test: /\.scss$/,
         use: [{
             // fallback to style-loader in development
@@ -53,14 +66,16 @@ const my_rules = [
             // loader: "style-loader"
             loader: MiniCssExtractPlugin.loader
         }, {
-            loader: 'css-loader', options: {
+            loader: 'css-loader',
+            options: {
                 sourceMap: true
             }
         }, {
-            loader: 'sass-loader', options: {
+            loader: 'sass-loader',
+            options: {
                 sourceMap: true
             }
-        }]
+        }],
     },
     {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
