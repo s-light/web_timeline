@@ -7,18 +7,42 @@ html, body {
 }
 
 body {
-    background-color: hsl(60, 100%, 60%);
+    /* background-color: hsl(60, 100%, 60%); */
     /* background-color: hsla(60, 70%, 60%, 1); */
+    min-width: 300px;
+    min-height: 300px;
+    position: relative;
 }
+
 
 section {
-    color: hsla(40, 100%, 0%, 1);
+    color: hsla(122, 100%, 0%, 1);
     transition: color 0.5s;
 }
 
-section:hover {
-    color: hsla(200, 100%, 50%, 1);
+/* section:hover {
+    color: hsla(122, 100%, 50%, 1);
     transition: color 0.5s;
+} */
+
+.full-view {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    /* width: 100%; */
+    /* height: 100%; */
+
+    margin: 2em 0 0 0;
+    padding: 0;
+
+    overflow: hidden;
+}
+
+.full-view svg {
+    position: relative;
 }
 
 .background {
@@ -37,19 +61,20 @@ section:hover {
     background-size: cover;
     /*background-image: url("data:%3C;base64,");*/
     background-color: rgb(180, 150, 230);
+    background-color: hsl(263, 62%, 75%);
     background-image:
         linear-gradient(
             180deg,
-            rgba(0, 0, 5, 0) 0%,
-            rgba(255, 150, 0, 0.8) 80%,
-            rgba(255, 100, 0, 1) 90%,
-            rgba(255, 100, 0, 1) 100%
+            hsla(240, 100%, 1%, 0) 0%,
+            hsla(35, 100%, 50%, 0.8) 80%,
+            hsla(24, 100%, 50%, 1) 90%,
+            hsla(24, 100%, 50%, 1) 100%
         ),
         radial-gradient(
             45vh at 50% 80%,
-            rgba(255, 0, 0, 1.0) 0%,
-            rgba(255, 150, 0, 0.9) 60%,
-            rgba(0, 0, 0, 0) 100%
+            hsla(0, 100%, 50%, 1) 0%,
+            hsla(35, 100%, 50%, 0.9) 60%,
+            hsla(35, 100%, 50%, 0) 100%
         )
     ;
 }
@@ -59,12 +84,20 @@ section:hover {
     background-image:
         linear-gradient(
             180deg,
-            rgba(10, 0, 50, 0.0) 0%,
-            rgba(10, 0, 50, 0.0) 85%,
-            rgba(10, 0, 50, 0.7) 87%,
-            rgba(10, 0, 50, 1) 95%,
-            rgba(10, 0, 25, 1) 100%
+            hsla(252, 100%, 10%, 0) 0%,
+            hsla(252, 100%, 10%, 0) 85%,
+            hsla(252, 100%, 10%, 0.1) 87%,
+            hsla(252, 100%, 10%, 0.3) 95%,
+            hsla(264, 100%,  5%, 0.5) 100%
         )
+        /* linear-gradient(
+            180deg,
+            hsla(252, 100%, 10%, 0) 0%,
+            hsla(252, 100%, 10%, 0) 85%,
+            hsla(252, 100%, 10%, 0.7) 87%,
+            hsla(252, 100%, 10%, 1) 95%,
+            hsla(264, 100%,  5%, 1) 100%
+        ) */
     ;
 }
 
@@ -93,35 +126,35 @@ section:hover {
     /* moewe */
     background-color: transparent;
     background-image:
-        radial-gradient(0.7em at  10.0%  80.0%, rgba(50, 100, 250, 0.9), transparent),
-        radial-gradient(0.7em at  13.0%  72.6%, rgba(50, 100, 250, 0.9), transparent),
-        radial-gradient(0.7em at  16.0%  65.6%, rgba(50, 100, 250, 0.9), transparent),
-        radial-gradient(0.7em at  19.5%  58.4%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  10.0%  80.0%, hsla(225, 95%, 59%, 0.9), transparent),
+        radial-gradient(0.7em at  13.0%  72.6%, hsla(225, 95%, 59%, 0.9), transparent),
+        radial-gradient(0.7em at  16.0%  65.6%, hsla(225, 95%, 59%, 0.9), transparent),
+        radial-gradient(0.7em at  19.5%  58.4%, hsla(225, 95%, 59%, 0.9), transparent),
 
-        radial-gradient(0.7em at  23.5%  50.1%, rgba(50, 100, 250, 0.9), transparent),
-        radial-gradient(0.7em at  28.2%  44.0%, rgba(50, 100, 250, 0.9), transparent),
-        radial-gradient(0.7em at  33.5%  38.8%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  23.5%  50.1%, hsla(225, 95%, 59%, 0.9), transparent),
+        radial-gradient(0.7em at  28.2%  44.0%, hsla(225, 95%, 59%, 0.9), transparent),
+        radial-gradient(0.7em at  33.5%  38.8%, hsla(225, 95%, 59%, 0.9), transparent),
 
-        radial-gradient(0.7em at  38.1%  37.2%, rgba(50, 100, 250, 0.9), transparent),
-        radial-gradient(0.7em at  42.4%  39.0%, rgba(50, 100, 250, 0.9), transparent),
-        radial-gradient(0.7em at  46.3%  43.4%, rgba(50, 100, 250, 0.9), transparent),
-
-
-        radial-gradient(0.7em at  50.0%  50.0%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  38.1%  37.2%, hsla(225, 95%, 59%, 0.9), transparent),
+        radial-gradient(0.7em at  42.4%  39.0%, hsla(225, 95%, 59%, 0.9), transparent),
+        radial-gradient(0.7em at  46.3%  43.4%, hsla(225, 95%, 59%, 0.9), transparent),
 
 
-        radial-gradient(0.7em at  53.7%  43.4%, rgba(50, 100, 250, 0.9), transparent),
-        radial-gradient(0.7em at  57.6%  39.0%, rgba(50, 100, 250, 0.9), transparent),
-        radial-gradient(0.7em at  61.9%  37.2%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  50.0%  50.0%, hsla(225, 95%, 59%, 0.9), transparent),
 
-        radial-gradient(0.7em at  66.5%  38.8%, rgba(50, 100, 250, 0.9), transparent),
-        radial-gradient(0.7em at  71.8%  44.0%, rgba(50, 100, 250, 0.9), transparent),
-        radial-gradient(0.7em at  76.5%  50.1%, rgba(50, 100, 250, 0.9), transparent),
 
-        radial-gradient(0.7em at  80.5%  58.4%, rgba(50, 100, 250, 0.9), transparent),
-        radial-gradient(0.7em at  84.0%  65.6%, rgba(50, 100, 250, 0.9), transparent),
-        radial-gradient(0.7em at  87.0%  72.6%, rgba(50, 100, 250, 0.9), transparent),
-        radial-gradient(0.7em at  90.0%  80.0%, rgba(50, 100, 250, 0.9), transparent);
+        radial-gradient(0.7em at  53.7%  43.4%, hsla(225, 95%, 59%, 0.9), transparent),
+        radial-gradient(0.7em at  57.6%  39.0%, hsla(225, 95%, 59%, 0.9), transparent),
+        radial-gradient(0.7em at  61.9%  37.2%, hsla(225, 95%, 59%, 0.9), transparent),
+
+        radial-gradient(0.7em at  66.5%  38.8%, hsla(225, 95%, 59%, 0.9), transparent),
+        radial-gradient(0.7em at  71.8%  44.0%, hsla(225, 95%, 59%, 0.9), transparent),
+        radial-gradient(0.7em at  76.5%  50.1%, hsla(225, 95%, 59%, 0.9), transparent),
+
+        radial-gradient(0.7em at  80.5%  58.4%, hsla(225, 95%, 59%, 0.9), transparent),
+        radial-gradient(0.7em at  84.0%  65.6%, hsla(225, 95%, 59%, 0.9), transparent),
+        radial-gradient(0.7em at  87.0%  72.6%, hsla(225, 95%, 59%, 0.9), transparent),
+        radial-gradient(0.7em at  90.0%  80.0%, hsla(225, 95%, 59%, 0.9), transparent);
     ;
     /*border: solid 1px blue;*/
 }
@@ -203,8 +236,106 @@ nav.menu ul li a {
 	text-decoration: none;
 }
 
-.nav_toggle-hidden {
+.nav_toggle.hidden {
     display: none;
+}
+
+
+svg.timeline {
+    /* position: relative; */
+    overflow-x: scroll;
+}
+
+
+#editor {
+    position: relative;
+}
+
+#editor input {
+    display: block;
+    min-width: 30em;
+}
+
+#editor .textarea-wrapper,
+#editor textarea,
+#editor input,
+#editor .input {
+    display: block;
+    position: relative;
+    margin: 0.5em;
+    padding: 0.5em;
+    overflow: hidden;
+
+    border: solid 1px;
+
+    transition: color 0.5s;
+    background-color: transparent;
+
+    font-size: 12px;
+    font-family: monospace;
+}
+
+#editor input {
+    position: relative;
+
+}
+
+#editor .input:hover {
+    color: hsla(122, 100%, 50%, 1);
+    transition: color 0.5s;
+}
+
+#editor .input.textline {
+    /* height: 1.3em; */
+}
+
+/* contenteditable version */
+#editor .input.textarea {
+    padding-left: 2.5em;
+    max-height: 10em;
+}
+
+#editor .input.textarea::before {
+	display: block;
+	/* content: '♥\A♥\A♥'; */
+    content: attr(data-before);
+    white-space: pre;
+	background-color: hsla(200, 100%, 50%, 0.5);
+	position: absolute;
+	left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2em;
+	text-align: right;
+}
+
+/* real textarea with label version */
+#editor .textarea-wrapper {
+    padding: 0;
+    max-height: 20em;
+}
+
+#editor .textarea-wrapper textarea {
+    position: relative;
+    margin: 0;
+    border: none 0;
+    padding-left: 2.5em;
+    font-size: 1em;
+    width: 80%;
+    /* height: 20em; */
+}
+
+#editor .textarea-wrapper label {
+	display: block;
+    white-space: pre;
+	background-color: hsla(200, 100%, 50%, 0.5);
+	position: absolute;
+	left: 0;
+    top: 0;
+    width: 2em;
+    min-height: 100%;
+	text-align: right;
+    padding: 0.5em 0.25em 0.5em 0;
 }
 
 
