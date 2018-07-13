@@ -25,11 +25,24 @@
             </ul>
         </nav>
     </header>
-    <section id="editor" class="nav_toggle hidden">
+
+
+    <section id="editor" class="nav_toggle ">
         <h1>editor</h1>
         there are things to do here ;-)
+        <textarea id="raw_data_input" name="raw_data_input" rows="15" cols="100">
+10.01.2017; 20.05.2017; event1; this is a longer description\n and a second line
+01.03.2018; 03.05.2018; event2; some text
+10.01.2018; 03.02.2018; event3; hello world
+        </textarea>
+        <button type="button" id="bt_parse" name="bt_parse">parse</button>
+        <div class="">
+
+        </div>
     </section>
-    <section id="timeline" class="full-view nav_toggle">
+
+
+    <section id="timeline" class="full-view nav_toggle hidden">
         <!-- <h1>Timeline</h1> -->
         <svg version="1.1"
             baseProfile="full"
@@ -44,8 +57,11 @@
             <path d="M0 0 L200 0 L80 200 Z" />
         </svg>
     </section>
+
+
     <section id="list" class="nav_toggle hidden">
         <h1>List</h1>
+
     </section>
 
     <!-- here at the end webpack will add the scripts -->

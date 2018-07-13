@@ -2,8 +2,11 @@
 
 import './timeline.css';
 
+// import moment from 'moment';
+
+
 export class TimeLine {
-    constructor(parent_el, data, svg_el=undefined) {
+    constructor(data, parent_el, svg_el=undefined) {
         console.groupCollapsed('timeline');
 
         this.data = data;
