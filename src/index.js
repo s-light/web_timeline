@@ -1,6 +1,7 @@
 'use strict';
 
 import './index.css';
+import './fancy_background.css';
 
 
 import moment from 'moment';

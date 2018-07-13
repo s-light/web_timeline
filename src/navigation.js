@@ -29,7 +29,7 @@ export default function init() {
 }
 
 function toggleView(event, target_el) {
-    console.log(event);
+    // console.log(event);
     for (const el of document.querySelectorAll('.nav_toggle')) {
         if (el === target_el) {
             el.classList.remove('nav_toggle-hidden');

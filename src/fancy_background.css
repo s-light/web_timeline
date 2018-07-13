@@ -1,0 +1,142 @@
+.background {
+    display: block;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+    /*background-image: url("data:%3C;base64,");*/
+    background-color: rgb(180, 150, 230);
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 5, 0) 0%,
+            rgba(255, 150, 0, 0.8) 80%,
+            rgba(255, 100, 0, 1) 90%,
+            rgba(255, 100, 0, 1) 100%
+        ),
+        radial-gradient(
+            45vh at 50% 80%,
+            rgba(255, 0, 0, 1.0) 0%,
+            rgba(255, 150, 0, 0.9) 60%,
+            rgba(0, 0, 0, 0) 100%
+        )
+    ;
+}
+
+.background_horizon {
+    background-color: transparent;
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(10, 0, 50, 0.0) 0%,
+            rgba(10, 0, 50, 0.0) 85%,
+            rgba(10, 0, 50, 0.7) 87%,
+            rgba(10, 0, 50, 1) 95%,
+            rgba(10, 0, 25, 1) 100%
+        )
+    ;
+}
+
+
+.text_content {
+    margin-bottom: 30em;
+    /*padding: 1em;*/
+    z-index: 1;
+}
+
+
+.moewe {
+    display: block;
+    position: fixed;
+    /*top: 1em;
+    right: 20em;*/
+    margin: 0;
+    padding: 0;
+    width: 20em;
+    height: 8em;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment:  local;
+    background-size: cover;
+    font-size: 16px;
+    /* moewe */
+    background-color: transparent;
+    background-image:
+        radial-gradient(0.7em at  10.0%  80.0%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  13.0%  72.6%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  16.0%  65.6%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  19.5%  58.4%, rgba(50, 100, 250, 0.9), transparent),
+
+        radial-gradient(0.7em at  23.5%  50.1%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  28.2%  44.0%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  33.5%  38.8%, rgba(50, 100, 250, 0.9), transparent),
+
+        radial-gradient(0.7em at  38.1%  37.2%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  42.4%  39.0%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  46.3%  43.4%, rgba(50, 100, 250, 0.9), transparent),
+
+
+        radial-gradient(0.7em at  50.0%  50.0%, rgba(50, 100, 250, 0.9), transparent),
+
+
+        radial-gradient(0.7em at  53.7%  43.4%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  57.6%  39.0%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  61.9%  37.2%, rgba(50, 100, 250, 0.9), transparent),
+
+        radial-gradient(0.7em at  66.5%  38.8%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  71.8%  44.0%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  76.5%  50.1%, rgba(50, 100, 250, 0.9), transparent),
+
+        radial-gradient(0.7em at  80.5%  58.4%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  84.0%  65.6%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  87.0%  72.6%, rgba(50, 100, 250, 0.9), transparent),
+        radial-gradient(0.7em at  90.0%  80.0%, rgba(50, 100, 250, 0.9), transparent);
+    ;
+    /*border: solid 1px blue;*/
+}
+
+.moewe_1 {
+    font-size: 20%;
+    top: 20%;
+    left: 55vw;
+    transform: rotate(-20deg);
+}
+
+.moewe_2 {
+    font-size: 25%;
+    top: 4em;
+    right: 60em;
+    transform: rotate(5deg);
+}
+
+.moewe_3 {
+    font-size: 30%;
+    top: 10vh;
+    right: 20%;
+    transform: rotate(10deg);
+    transform-origin: center;
+}
+
+.moewe_4 {
+    font-size: 20%;
+    top: 20vh;
+    left: 20%;
+    transform: rotate(-10deg);
+    transform-origin: center;
+}
+
+.moewe_5 {
+    font-size: 20%;
+    top: 20vw;
+    right: 5%;
+    transform: rotate(30deg);
+    transform-origin: center;
+}
