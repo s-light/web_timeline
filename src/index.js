@@ -45,12 +45,12 @@ window.addEventListener('load', function() {
         my_rawparser.data_update_event_name
     );
 
-    // document.addEventListener(
-    //     my_rawparser.data_update_event_name,
-    //     (event) => {
-    //         console.log(event);
-    //     }
-    // );
+    document.addEventListener(
+        my_rawparser.data_update_event_name,
+        (event) => {
+            console.log('index.js', event);
+        }
+    );
     // console.log(my_rawparser.data_update_event_name);
 
 });
