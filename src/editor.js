@@ -39,7 +39,7 @@ export class RawParser {
 
         this.data.entries = [];
         // let raw_text = this.text_input_el.value;
-        let raw_text = this.text_input_el.textContent.trim();
+        let raw_text = this.text_input_el.value.trim();
         // console.log('raw_text\n\n', raw_text);
         let lines = raw_text.split('\n');
         for (let [line_index, line] of lines.entries()) {
