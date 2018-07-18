@@ -13,6 +13,8 @@ export class RawParser {
 
         this.separator = '; ';
         this.data_format = [];
+        this.min_part_count_default = 3;
+        this.min_part_count = this.min_part_count_default;
 
         this.text_input_el.addEventListener(
             'input',
@@ -36,6 +38,13 @@ export class RawParser {
             this.data_format.push(part.trim());
         }
         // console.log('this.data_format', this.data_format);
+        // update min part count
+        if (this.min_part_count_default > this.data_format.length) {
+            this.min_part_count = this.data_format.length;
+        } else {
+            this.min_part_count = this.min_part_count_default;
+        }
+
 
         this.data.entries = [];
         // let raw_text = this.text_input_el.value;
@@ -47,7 +56,7 @@ export class RawParser {
             line = line.trim();
             // console.log('line: \'' + line + '\'');
             const parts = line.split(this.separator);
-            if (parts.length >= this.data_format.length) {
+            if (parts.length >= this.min_part_count) {
                 let entry = {};
                 entry['line'] = line_index;
                 for (let [index, part] of parts.entries()) {
