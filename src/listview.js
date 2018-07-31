@@ -32,7 +32,9 @@ export class ListView {
 
     init() {
         this.page = document.createElement('section');
+        this.page.classList.add('sheet');
         this.page.classList.add('DINA4');
+        this.page.classList.add('landscape');
 
         this.table = document.createElement('table');
         // this.table.classList.add('');

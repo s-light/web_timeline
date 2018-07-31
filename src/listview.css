@@ -1,4 +1,64 @@
 
 #listview {
-    
+
+}
+
+#listview td {
+	padding: 0 1em;
+}
+
+
+.sheet {
+    display: block;
+    background-color: rgb(255,255,255);
+
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    page-break-after: always;
+
+
+    margin: 0;
+    padding: 10mm;
+
+    /* height: 100%;
+    width: 100%; */
+}
+
+.DINA4 {
+    width: 210mm;
+    height: 296mm;
+}
+
+.DINA4.landscape {
+    width: 297mm;
+    height: 209mm;
+}
+
+
+@page {
+    margin: 0;
+    size: A4 landscape;
+}
+
+@media screen {
+    .sheet {
+        margin: 1em;
+    }
+}
+
+@media print {
+    html, body {
+        /* width: 210mm;
+        height: 297mm; */
+        width: 297mm;
+        height: 209mm;
+    }
+    /* hide all unused things.. ?! */
+    .background,
+    .moewe,
+    #listview > h1,
+    header {
+        display: none;
+    }
 }
