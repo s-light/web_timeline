@@ -31,10 +31,22 @@ export class RawParser {
 
     parse() {
         // update data_format
-        let raw_format = this.format_input_el.value.trim();
-        // console.log('raw_format', raw_format);
+        self.parseFormat(this.format_input_el.value);
+
+        self.parseContent(this.text_input_el.value);
+
+
+        // console.log(this.prettyprint(this.data.entries));
+        this.data_json_el.textContent = this.prettyprint(this.data.entries);
+
+        self.sendUpdate();
+    }
+
+    parseFormat(raw_text) {
+        raw_text = raw_text.trim();
+        // console.log('parseFormat raw_text', raw_text);
         this.data_format = [];
-        for (let part of raw_format.split(this.separator)) {
+        for (let part of raw_text.split(this.separator)) {
             this.data_format.push(part.trim());
         }
         // console.log('this.data_format', this.data_format);
@@ -44,31 +56,42 @@ export class RawParser {
         } else {
             this.min_part_count = this.min_part_count_default;
         }
+    }
 
-
+    parseContent(raw_text) {
+        raw_text = raw_text.trim();
+        // console.log('parseContent raw_text', raw_text);
         this.data.entries = [];
-        // let raw_text = this.text_input_el.value;
-        let raw_text = this.text_input_el.value.trim();
         // console.log('raw_text\n\n', raw_text);
         let lines = raw_text.split('\n');
         for (let [line_index, line] of lines.entries()) {
-            // this.parseline(line);
-            line = line.trim();
-            // console.log('line: \'' + line + '\'');
-            const parts = line.split(this.separator);
-            if (parts.length >= this.min_part_count) {
-                let entry = {};
-                entry['line'] = line_index;
-                for (let [index, part] of parts.entries()) {
-                    entry[this.data_format[index]] = part.trim();
-                }
-                this.data.entries.push(entry);
-            }
+            self.parseLine(line, line_index);
         }
+    }
 
-        // console.log(this.prettyprint(this.data.entries));
-        this.data_json_el.textContent = this.prettyprint(this.data.entries);
+    parseLine(line, index) {
+        line = line.trim();
+        // console.log('line: \'' + line + '\'');
+        const parts = line.split(this.separator);
+        if (parts.length >= this.min_part_count) {
+            let entry = {};
+            entry['line'] = index;
+            for (let [index, part] of parts.entries()) {
+                self.parsePart(part, entry, index);
+            }
+            this.data.entries.push(entry);
+        }
+    }
 
+    parsePart(raw_text, entry, data_format_index) {
+        raw_text = raw_text.trim();
+        // console.log('parseContent raw_text', raw_text);
+        // TODO
+        // implement different handling for different data formats
+        entry[this.data_format[data_format_index]] = raw_text;
+    }
+
+    sendUpdate () {
         // inform all that the data has changed..
         // https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events
         // https://developer.mozilla.org/en-US/docs/Web/API/Event/Event
