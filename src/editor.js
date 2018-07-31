@@ -1,5 +1,7 @@
 import './editor.css';
 
+import moment from 'moment';
+
 export class RawParser {
     constructor(data, text_input_el, format_input_el, data_json_el) {
         console.groupCollapsed('RawParser');
@@ -31,15 +33,15 @@ export class RawParser {
 
     parse() {
         // update data_format
-        self.parseFormat(this.format_input_el.value);
+        this.parseFormat(this.format_input_el.value);
 
-        self.parseContent(this.text_input_el.value);
+        this.parseContent(this.text_input_el.value);
 
 
         // console.log(this.prettyprint(this.data.entries));
         this.data_json_el.textContent = this.prettyprint(this.data.entries);
 
-        self.sendUpdate();
+        this.sendUpdate();
     }
 
     parseFormat(raw_text) {
@@ -65,7 +67,7 @@ export class RawParser {
         // console.log('raw_text\n\n', raw_text);
         let lines = raw_text.split('\n');
         for (let [line_index, line] of lines.entries()) {
-            self.parseLine(line, line_index);
+            this.parseLine(line, line_index);
         }
     }
 
@@ -77,7 +79,7 @@ export class RawParser {
             let entry = {};
             entry['line'] = index;
             for (let [index, part] of parts.entries()) {
-                self.parsePart(part, entry, index);
+                this.parsePart(part, entry, index);
             }
             this.data.entries.push(entry);
         }
@@ -88,7 +90,14 @@ export class RawParser {
         // console.log('parseContent raw_text', raw_text);
         // TODO
         // implement different handling for different data formats
-        entry[this.data_format[data_format_index]] = raw_text;
+        const data_format = this.data_format[data_format_index];
+        // start_date; end_date; place; company; activity; description
+        if (data_format.includes('date')) {
+            entry[data_format] = new PartDate(raw_text);
+        }
+        else {
+            entry[data_format] = new PartText(raw_text);
+        }
     }
 
     sendUpdate () {
@@ -113,6 +122,138 @@ export class RawParser {
         return JSON.stringify(obj, null, 2);
     }
 }
+
+class PartText {
+    constructor(text_raw) {
+        // console.groupCollapsed('PartText');
+
+        this.raw = text_raw.trim();
+        this.index = 0;
+        this.data = [];
+
+        this.init();
+
+        // console.groupEnd();
+    }
+
+    init() {
+        // if this.raw has no line-breaks use as is
+        this.data = [this.raw];
+
+        // handle newlines
+        const newline_separator = /\\n/g;
+
+        if (typeof this.raw == 'string' && newline_separator.test(this.raw)) {
+            // this.raw = this.raw.replace(/\\n/g, '\n');
+            this.data = this.raw.split(newline_separator);
+
+            // this creates a infinity loop!!!
+            // for (let index of this.raw.keys()) {
+            //     // careful: this creates an infinity loop!!!
+            //     // this.raw.splice(index+1, 0, document.createElement('br'));
+            // }
+
+            // forEach first creates an internal list of the elements to visit.
+            // so no infinity loop..
+            this.data.forEach(function(element, index) {
+                this.data.splice(index+index+1, 0, document.createElement('br'));
+                // this.raw.splice(index+index+1, 0, '- *test* -');
+            }, this);
+            // console.log('this.raw', this.raw);
+        }
+    }
+
+    [Symbol.toString]() {
+        return this.raw;
+    }
+
+    [Symbol.iterator]() {
+        return {
+            next: () => {
+                if (this.index < this.data.length) {
+                    return {value: this.data[this.index++], done: false};
+                } else {
+                    //If we would like to iterate over this again without forcing manual update of the index
+                    this.index = 0;
+                    return {done: true};
+                }
+            }
+        };
+    }
+
+}
+
+// class PartDate extends moment {
+class PartDate {
+    constructor(
+        text_raw,
+        parse_format = 'DD.MM.YYYY',
+        display_format = 'DD.MM.YYYY'
+    ) {
+        // console.groupCollapsed('PartDate');
+
+        text_raw = text_raw.trim();
+        // super(text_raw, parse_format);
+        this.moment = new moment(text_raw, parse_format);
+
+        this.raw = text_raw;
+
+        this._iterator_done = false;
+        this.index = 0;
+        // this.data = [];
+        this.display_format = display_format;
+        this.parse_format = parse_format;
+
+        // console.groupEnd();
+
+        // this.fn[Symbol.iterator] = this.test;
+    }
+
+    // [Symbol.toString]() {
+    // toString() {
+    //     console.log(
+    //         'PartDate - special toString function:',
+    //         this.moment.format(this.display_format)
+    //     );
+    //     // return this.moment.format(this.display_format);
+    //     return this.moment.format();
+    // }
+    //
+    // // [Symbol.valueOf]() {
+    // valueOf() {
+    //     console.log(
+    //         'PartDate - special valueOf function:',
+    //         this.moment.format(this.display_format)
+    //     );
+    //     // return this.moment.format(this.display_format);
+    //     return this.moment.format();
+    // }
+
+    [Symbol.iterator]() {
+        return {
+            next: () => {
+                // if (this._iterator_done) {
+                //     this._iterator_done = true;
+                if (this.index < 1) {
+                    this.index++;
+                    return {
+                        value: this.moment.format(this.display_format),
+                        done: false
+                    };
+                } else {
+                    this.index = 0;
+                    return {
+                        done: true
+                    };
+                }
+            }
+        };
+    }
+
+
+}
+
+
 
 export class TextAreaWithLineNumbers {
     constructor(textarea_el) {

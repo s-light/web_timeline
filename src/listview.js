@@ -60,38 +60,25 @@ export class ListView {
             // console.log(entry);
             const tr = document.createElement('tr');
             this.tbody.append(tr);
-            // for (let format_obj of this.format) {
-            //
-            // }
             for (let part_name in entry) {
                 const td = document.createElement('td');
                 tr.append(td);
-                let value = entry[part_name];
-                // console.log('value', value);
-                // handle newlines
-                const newline_separator = /\\n/g;
-                if (typeof value == 'string' && newline_separator.test(value)) {
-                    // value = value.replace(/\\n/g, '\n');
-                    value = value.split(newline_separator);
-
-                    // this creates a infinity loop!!!
-                    // for (let index of value.keys()) {
-                    //     // careful: this creates an infinity loop!!!
-                    //     // value.splice(index+1, 0, document.createElement('br'));
-                    // }
-
-                    // forEach first creates an internal list of the elements to visit.
-                    // so no infinity loop..
-                    value.forEach(function(element, index) {
-                        value.splice(index+index+1, 0, document.createElement('br'));
-                        // value.splice(index+index+1, 0, '- *test* -');
-                    });
-                    // console.log('value', value);
-                    td.append(...value);
+                console.log(
+                    'typeof entry[part_name]',
+                    typeof entry[part_name],
+                    // '\n',
+                    // 'entry[part_name]',
+                    entry[part_name]
+                );
+                if (typeof entry[part_name] === 'object') {
+                    console.log(
+                        '...entry[part_name]',
+                        ...entry[part_name]
+                    );
+                    td.append(...entry[part_name]);
                 }
                 else {
-                    // console.log('value', value);
-                    td.append(value);
+                    td.append(entry[part_name]);
                 }
             }
 
