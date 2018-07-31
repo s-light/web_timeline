@@ -55,6 +55,14 @@ export class ListView {
         // recreate
         this.thead = document.createElement('thead');
         this.table.append(this.thead);
+        let tr = document.createElement('tr');
+        this.thead.append(tr);
+        for (let part_name in this.data.entries[0]) {
+            const th = document.createElement('th');
+            th.append(part_name);
+            tr.append(th);
+        }
+
         this.tbody = document.createElement('tbody');
         this.table.append(this.tbody);
 
