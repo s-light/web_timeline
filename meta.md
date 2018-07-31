@@ -19,6 +19,12 @@ $ npm run-script serve
 ```
 same as start but does not open the browser
 
+
+```
+$ npm run-script build
+```
+for a full build and write to disc of the files..
+
 more information at [Using webpack-dev-server](https://webpack.js.org/guides/development/#using-webpack-dev-server)
 
 ## how to start the local test server
