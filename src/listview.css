@@ -14,7 +14,7 @@
 
 #listview th {
 	padding-top: 0mm;
-    background-color: rgb(200,200,0)
+    /* background-color: rgb(200, 200, 0) */
 }
 
 
@@ -46,7 +46,7 @@
 .DINA4.landscape {
     /* width: 297mm;
     min-height: 209mm; */
-    
+
     /* fixed with margins */
     width: 277mm;
     min-height: 189mm;
