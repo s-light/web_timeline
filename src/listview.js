@@ -48,7 +48,7 @@ export class ListView {
     }
 
     update(event) {
-        console.log('listview update', event);
+        // console.log('listview update', event);
         // clean up.
         this.thead.remove();
         this.tbody.remove();
@@ -73,18 +73,18 @@ export class ListView {
             for (let part_name in entry) {
                 const td = document.createElement('td');
                 tr.append(td);
-                console.log(
-                    'typeof entry[part_name]',
-                    typeof entry[part_name],
-                    // '\n',
-                    // 'entry[part_name]',
-                    entry[part_name]
-                );
+                // console.log(
+                //     'typeof entry[part_name]',
+                //     typeof entry[part_name],
+                //     // '\n',
+                //     // 'entry[part_name]',
+                //     entry[part_name]
+                // );
                 if (typeof entry[part_name] === 'object') {
-                    console.log(
-                        '...entry[part_name]',
-                        ...entry[part_name]
-                    );
+                    // console.log(
+                    //     '...entry[part_name]',
+                    //     ...entry[part_name]
+                    // );
                     td.append(...entry[part_name]);
                 }
                 else {
@@ -94,4 +94,5 @@ export class ListView {
 
         }
     }
+
 }

@@ -1,6 +1,7 @@
 import './editor.css';
 
 import moment from 'moment';
+import twix from 'twix';
 
 export class RawParser {
     constructor(data, text_input_el, format_input_el, data_json_el) {
@@ -37,6 +38,7 @@ export class RawParser {
 
         this.parseContent(this.text_input_el.value);
 
+        this.refineData();
 
         // console.log(this.prettyprint(this.data.entries));
         this.data_json_el.textContent = this.prettyprint(this.data.entries);
@@ -97,6 +99,15 @@ export class RawParser {
         }
         else {
             entry[data_format] = new PartText(raw_text);
+        }
+    }
+
+    refineData() {
+        for (const entry of this.data.entries) {
+            entry['duration'] = new PartDuration(
+                entry['date_start'],
+                entry['date_end']
+            );
         }
     }
 
@@ -194,9 +205,21 @@ class PartDate {
 
         text_raw = text_raw.trim();
         // super(text_raw, parse_format);
-        this.moment = new moment(text_raw, parse_format);
-
         this.raw = text_raw;
+
+        console.log('this.raw', this.raw);
+        if (this.raw == 'now') {
+            this.moment = new moment();
+            console.log('now!!', this.moment);
+        }
+        else {
+            this.moment = new moment(this.raw, parse_format);
+        }
+
+        // console.log('this.moment.isValid()', this.moment.isValid());
+        // if (!this.moment.isValid()) {
+        //     console.log('this.moment', this.moment);
+        // }
 
         this._iterator_done = false;
         this.index = 0;
@@ -253,6 +276,66 @@ class PartDate {
 
 }
 
+class PartDuration {
+    constructor(
+        date_start,
+        date_end
+    ) {
+        // console.groupCollapsed('PartDuration');
+        // console.log(entry);
+        // if (date_end.moment.isValid()) {
+        //     this.moment = date_start.moment.twix(
+        //         date_end.moment,
+        //         {allDay: true}
+        //     );
+        // }
+        // else {
+        //     this.moment = date_start.moment.twix(
+        //         date_start.moment,
+        //         {allDay: true}
+        //     );
+        // }
+
+        if (!date_end.moment.isValid()) {
+            date_end.moment = date_start.moment.clone().endOf('day');
+        }
+
+
+        this.moment = date_start.moment.twix(date_end.moment);
+        // console.log('entry.duration', entry.duration);
+
+
+        this._iterator_done = false;
+        this.index = 0;
+        // this.data = [];
+
+        // console.groupEnd();
+    }
+
+    [Symbol.iterator]() {
+        return {
+            next: () => {
+                // if (this._iterator_done) {
+                //     this._iterator_done = true;
+                if (this.index < 1) {
+                    this.index++;
+                    return {
+                        value: this.moment.humanizeLength(),
+                        done: false
+                    };
+                } else {
+                    this.index = 0;
+                    return {
+                        done: true
+                    };
+                }
+            }
+        };
+    }
+
+
+}
+
 
 
 export class TextAreaWithLineNumbers {
@@ -294,7 +377,12 @@ export class TextAreaWithLineNumbers {
         // console.log('update');
         // update data_format
         // console.log('this.textarea_el.textContent', this.textarea_el.value);
-        let line_count = this.textarea_el.value.match(/\n/g).length + 1;
+
+        let textarea_value = this.textarea_el.value;
+        let line_count = 1;
+        if (textarea_value.length > 0) {
+            line_count = this.textarea_el.value.match(/\n/g).length + 1;
+        }
         // console.log('line_count', line_count);
         let line_numbers =  [...Array(line_count).keys()].join('\n');
         // console.log('line_numbers', line_numbers);

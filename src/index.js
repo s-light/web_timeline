@@ -1,5 +1,7 @@
 'use strict';
 
+import moment from 'moment';
+
 import './index.css';
 import './fancy_background.css';
 
@@ -15,6 +17,10 @@ import * as listview_module from './listview.js';
 window.addEventListener('load', function() {
     console.log('init application');
     navigation_init();
+
+    // globally set language for time things
+    moment.locale('de');
+
 
     let data = {
         entries: [],
@@ -48,7 +54,7 @@ window.addEventListener('load', function() {
     document.addEventListener(
         my_rawparser.data_update_event_name,
         (event) => {
-            console.log('index.js', event);
+            // console.log('index.js', event);
         }
     );
     // console.log(my_rawparser.data_update_event_name);
