@@ -38,12 +38,12 @@ window.addEventListener('load', function() {
     );
     new editor_module.TextAreaWithLineNumbers(text_input_el);
 
-    const listview_el = document.querySelector('#listview');
-    new listview_module.ListView(
-        data,
-        listview_el,
-        my_rawparser.data_update_event_name
-    );
+    // const listview_el = document.querySelector('#listview');
+    // new listview_module.ListView(
+    //     data,
+    //     listview_el,
+    //     my_rawparser.data_update_event_name
+    // );
 
     document.addEventListener(
         my_rawparser.data_update_event_name,

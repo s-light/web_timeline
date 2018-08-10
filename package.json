@@ -41,6 +41,9 @@
     "webpack-serve": "^2.0.2"
   },
   "dependencies": {
+    "d3": "^5.5.0",
+    "d3-timeline-chart": "^1.3.0",
+    "d3-tip": "^0.9.1",
     "moment": "^2.22.2"
   }
 }

@@ -4,6 +4,11 @@
     <meta charset="utf-8">
     <title>Timeline App</title>
     <!-- styles are imported from the index.js file -->
+     <!-- <script src="https://d3js.org/d3.v5.js"></script> -->
+    <!-- <script src="https://d3js.org/d3-time.v1.js"></script> -->
+    <script src="https://d3js.org/d3.v3.js"></script>
+    <script src="https://raw.github.com/Caged/d3-tip/master/index.js"></script>
+    <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
 </head>
 <body>
     <!-- fancy background style -->
@@ -72,9 +77,9 @@
     </section>
 
 
-    <section id="timeline" class="full-view nav_toggle hidden">
+    <section id="timeline" class="full-view nav_toggle">
         <!-- <h1>Timeline</h1> -->
-        <svg version="1.1"
+        <!-- <svg version="1.1"
             baseProfile="full"
             xmlns="http://www.w3.org/2000/svg"
             height="100%"
@@ -85,11 +90,11 @@
         >
             <g></g>
             <path d="M0 0 L200 0 L80 200 Z" />
-        </svg>
+        </svg> -->
     </section>
 
 
-    <section id="listview" class="nav_toggle ">
+    <section id="listview" class="nav_toggle hidden">
         <h1>List</h1>
 
     </section>
