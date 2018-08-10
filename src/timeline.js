@@ -4,10 +4,10 @@ import './timeline.css';
 
 // import moment from 'moment';
 
-import * as d3 from 'd3';
-// import {d3time} from "d3-time";
-import {d3tip} from "d3-tip";
-import TimelineChart from 'd3-timeline-chart';
+// import * as d3 from 'd3';
+// // import {d3time} from "d3-time";
+// import {d3tip} from "d3-tip";
+// import TimelineChart from 'd3-timeline-chart';
 
 
 export class TimeLine {
@@ -27,73 +27,73 @@ export class TimeLine {
 
         // D3 TimelineChart
         // https://github.com/commodityvectors/d3-timeline
-        this.data = [
-            {
-                label: 'Hello',
-                data: [
-                    {
-                        type: TimelineChart.TYPE.POINT,
-                        at: new Date([2015, 1, 11])
-                    }, {
-                        label: 'I\'m a label',
-                        type: TimelineChart.TYPE.INTERVAL,
-                        from: new Date([2015, 2, 1]),
-                        to: new Date([2015, 3, 1])
-                    }, {
-                        label: 'some text...',
-                        type: TimelineChart.TYPE.INTERVAL,
-                        from: new Date([2016, 5, 1]),
-                        to: new Date([2016, 9, 1])
-                    },
-                ],
-            },
-            {
-                label: 'World',
-                data: [
-                    {
-                        type: TimelineChart.TYPE.POINT,
-                        at: new Date([2015, 1, 11])
-                    }, {
-                        type: TimelineChart.TYPE.POINT,
-                        at: new Date([2015, 1, 15])
-                    }, {
-                        type: TimelineChart.TYPE.POINT,
-                        at: new Date([2015, 3, 10])
-                    }, {
-                        label: 'I\'m a label',
-                        type: TimelineChart.TYPE.INTERVAL,
-                        from: new Date([2015, 2, 1]),
-                        to: new Date([2015, 3, 1])
-                    }, {
-                        label: 'some text...',
-                        type: TimelineChart.TYPE.INTERVAL,
-                        from: new Date([2017, 1, 1]),
-                        to: new Date([2017, 2, 1])
-                    }, {
-                        label: 'some text...',
-                        type: TimelineChart.TYPE.INTERVAL,
-                        from: new Date([2016, 5, 1]),
-                        to: new Date([2016, 9, 1])
-                    }, {
-                        type: TimelineChart.TYPE.POINT,
-                        at: new Date([2015, 6, 1])
-                    }, {
-                        type: TimelineChart.TYPE.POINT,
-                        at: new Date([2015, 7, 1]),
-                        customClass: 'custom-class'
-                    },
-                ],
-            },
-        ];
-        self.timeline = new TimelineChart(
-            this.parent,
-            this.data,
-            {
-                tip: function(d) {
-                    return d.at || `${d.from}<br>${d.to}`;
-                }
-            }
-        );
+        // this.data = [
+        //     {
+        //         label: 'Hello',
+        //         data: [
+        //             {
+        //                 type: TimelineChart.TYPE.POINT,
+        //                 at: new Date([2015, 1, 11])
+        //             }, {
+        //                 label: 'I\'m a label',
+        //                 type: TimelineChart.TYPE.INTERVAL,
+        //                 from: new Date([2015, 2, 1]),
+        //                 to: new Date([2015, 3, 1])
+        //             }, {
+        //                 label: 'some text...',
+        //                 type: TimelineChart.TYPE.INTERVAL,
+        //                 from: new Date([2016, 5, 1]),
+        //                 to: new Date([2016, 9, 1])
+        //             },
+        //         ],
+        //     },
+        //     {
+        //         label: 'World',
+        //         data: [
+        //             {
+        //                 type: TimelineChart.TYPE.POINT,
+        //                 at: new Date([2015, 1, 11])
+        //             }, {
+        //                 type: TimelineChart.TYPE.POINT,
+        //                 at: new Date([2015, 1, 15])
+        //             }, {
+        //                 type: TimelineChart.TYPE.POINT,
+        //                 at: new Date([2015, 3, 10])
+        //             }, {
+        //                 label: 'I\'m a label',
+        //                 type: TimelineChart.TYPE.INTERVAL,
+        //                 from: new Date([2015, 2, 1]),
+        //                 to: new Date([2015, 3, 1])
+        //             }, {
+        //                 label: 'some text...',
+        //                 type: TimelineChart.TYPE.INTERVAL,
+        //                 from: new Date([2017, 1, 1]),
+        //                 to: new Date([2017, 2, 1])
+        //             }, {
+        //                 label: 'some text...',
+        //                 type: TimelineChart.TYPE.INTERVAL,
+        //                 from: new Date([2016, 5, 1]),
+        //                 to: new Date([2016, 9, 1])
+        //             }, {
+        //                 type: TimelineChart.TYPE.POINT,
+        //                 at: new Date([2015, 6, 1])
+        //             }, {
+        //                 type: TimelineChart.TYPE.POINT,
+        //                 at: new Date([2015, 7, 1]),
+        //                 customClass: 'custom-class'
+        //             },
+        //         ],
+        //     },
+        // ];
+        // self.timeline = new TimelineChart(
+        //     this.parent,
+        //     this.data,
+        //     {
+        //         tip: function(d) {
+        //             return d.at || `${d.from}<br>${d.to}`;
+        //         }
+        //     }
+        // );
 
         this.parent.addEventListener(
             this.data_update_event_name,
