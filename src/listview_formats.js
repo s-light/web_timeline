@@ -41,13 +41,13 @@ export class TableContent {
     }
 
     append_entry_part(entry, td, part_name) {
-        console.log(
-            'typeof entry[part_name]',
-            typeof entry[part_name],
-            // '\n',
-            // 'entry[part_name]',
-            entry[part_name]
-        );
+        // console.log(
+        //     'typeof entry[part_name]',
+        //     typeof entry[part_name],
+        //     // '\n',
+        //     // 'entry[part_name]',
+        //     entry[part_name]
+        // );
         if (typeof entry[part_name] === 'object') {
             td.append(...entry[part_name]);
         }

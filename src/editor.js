@@ -179,7 +179,7 @@ class PartText {
         if (typeof this.raw == 'string' && newline_separator.test(this.raw)) {
             // this.raw = this.raw.replace(/\\n/g, '\n');
             this.data = this.raw.split(newline_separator);
-
+            console.log('this.data', this.data);
             // this creates a infinity loop!!!
             // for (let index of this.raw.keys()) {
             //     // careful: this creates an infinity loop!!!
@@ -188,10 +188,16 @@ class PartText {
 
             // forEach first creates an internal list of the elements to visit.
             // so no infinity loop..
-            this.data.forEach(function(element, index) {
+            // this.data.forEach(function(element, index) {
+            //     this.data.splice(index+index+1, 0, document.createElement('br'));
+            //     // this.raw.splice(index+index+1, 0, '- *test* -');
+            // }, this);
+            // insert a br between all elements (but not after the last one)
+            const data_length = this.data.length-1;
+            for (var index = 0; index < data_length; index++) {
                 this.data.splice(index+index+1, 0, document.createElement('br'));
-                // this.raw.splice(index+index+1, 0, '- *test* -');
-            }, this);
+            }
+            console.log('this.data', this.data);
             // console.log('this.raw', this.raw);
         }
     }
