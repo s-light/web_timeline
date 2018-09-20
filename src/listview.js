@@ -17,8 +17,8 @@ export class ListView {
         this.main_el = main_el;
         console.log('this.main_el', this.main_el);
 
-        // this.tablecontent_creator = new TableContent(data);
-        this.tablecontent_creator = new myFormat(data);
+        // this.tablecontent_creator = new TableContent(this.data);
+        this.tablecontent_creator = new myFormat(this.data);
 
         this.init();
         this.update();
@@ -72,13 +72,31 @@ export class ListView {
         this.tbody = document.createElement('tbody');
         this.table.append(this.tbody);
 
-        for (let entry of this.data.entries) {
+        let temp_data = this.data.entries;
+        temp_data = temp_data.sort(this.sort_entries);
+        for (let entry of temp_data) {
             // console.log(entry);
             const tr = document.createElement('tr');
             this.tbody.append(tr);
             this.tablecontent_creator.append_row_content(tr, entry);
 
         }
+    }
+
+    sort_entries(a, b) {
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+        // console.log('a.date_start.moment', a.date_start.moment);
+        // console.log('b.date_start.moment', b.date_start.moment);
+        let result = a.date_start.moment - b.date_start.moment;
+        // console.log('result', result);
+        if (result == 0) {
+            // console.log('a/b .duration.moment\n', a.duration.moment, '\n', b.duration.moment);
+            // console.log('a.duration.moment.count()', a.duration.moment.count());
+            // console.log('b.duration.moment.count()', b.duration.moment.count());
+            result = a.duration.moment.count() - b.duration.moment.count();
+            // console.log('result', result);
+        }
+        return result;
     }
 
 }
