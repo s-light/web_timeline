@@ -74,7 +74,7 @@ export class RawParser {
     }
 
     parseLine(line, index) {
-        console.info('parseLine');
+        // console.info('parseLine');
         line = line.trim();
         // console.log('line: \'' + line + '\'');
         const parts = line.split(this.separator);
@@ -106,7 +106,7 @@ export class RawParser {
         if (raw_text.length > 0) {
             const sep = new RegExp('^' + this.separator + '+|' + this.separator + '+$', 'g');
             raw_text = raw_text.replace(sep, '');
-            console.log('parseContent raw_text', raw_text);
+            // console.log('parseContent raw_text', raw_text);
             let data_format = this.data_format[data_format_index];
             if (!data_format) {
                 data_format = 'extended_' + data_format_index.toString();
@@ -125,7 +125,14 @@ export class RawParser {
     }
 
     refineData() {
+        // console.info('refineData');
+        // console.log(new PartDate(''));
         for (const entry of this.data.entries) {
+            // add missing date_end
+            if ('date_end' in entry === false) {
+                entry['date_end'] = new PartDate('');
+            }
+            // console.log('entry', entry);
             entry['duration'] = new PartDuration(
                 entry['date_start'],
                 entry['date_end']
@@ -179,7 +186,7 @@ class PartText {
         if (typeof this.raw == 'string' && newline_separator.test(this.raw)) {
             // this.raw = this.raw.replace(/\\n/g, '\n');
             this.data = this.raw.split(newline_separator);
-            console.log('this.data', this.data);
+            // console.log('this.data', this.data);
             // this creates a infinity loop!!!
             // for (let index of this.raw.keys()) {
             //     // careful: this creates an infinity loop!!!
@@ -197,7 +204,7 @@ class PartText {
             for (var index = 0; index < data_length; index++) {
                 this.data.splice(index+index+1, 0, document.createElement('br'));
             }
-            console.log('this.data', this.data);
+            // console.log('this.data', this.data);
             // console.log('this.raw', this.raw);
         }
     }
@@ -323,11 +330,11 @@ class PartDuration {
         //         {allDay: true}
         //     );
         // }
-
+        
+        // console.log('date_end', date_end);
         if (!date_end.moment.isValid()) {
             date_end.moment = date_start.moment.clone().endOf('day');
         }
-
 
         this.moment = date_start.moment.twix(date_end.moment);
         // console.log('entry.duration', entry.duration);
