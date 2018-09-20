@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title>Timeline App</title>
     <!-- styles are imported from the index.js file -->
+    <!-- <script src="https://d3js.org/d3.v3.js"></script>
+    <script src="https://raw.github.com/Caged/d3-tip/master/index.js"></script>
+    <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css"> -->
 <link href="main.css" rel="stylesheet"></head>
 <body>
     <!-- fancy background style -->
@@ -27,7 +30,7 @@
     </header>
 
 
-    <section id="editor" class="nav_toggle hidden">
+    <section id="editor" class="nav_toggle">
         <h1>editor</h1>
         there are things to do here ;-)
         <!-- <div id="raw_data_format_input" class="input textline" contenteditable="true">
@@ -42,22 +45,25 @@
             id="raw_data_format_input"
             name="raw_data_format_input"
             type="text"
-            value="start_date; end_date; place; company; activity; description"
+            value="date_start; date_end; place; company; activity; description"
             placeholder="; separated names"
         />
         <textarea id="raw_data_input" name="raw_data_input" >
             10.01.2017; 20.05.2017; Hamburg; school1; event1; this is a longer description\n and a second line
             01.03.2018; 03.05.2018; Hamburg; school2; activity2; some text
-            10.01.2018; 03.02.2018; Frankfurt; company1; event3;
 
+            10.01.2018; 03.02.2018; Frankfurt; company1; event3;
+            ;         ;           ;          ;         ;       ;
             10.01.2018; 03.02.2018; Nürnberg; private; activity1;
             10.01.2018; 03.02.2018; Frankfurt; company2; event2; hello world
-            01.03.2016; 31.05.2016; Frankfurt; company2; do something;
-            10.07.2017; 20.07.2017; ; ; do something; some secrets ;-)
 
+            01.03.2016; 31.05.2016; Frankfurt; company2; do something;
+            10.07.2017; 20.07.2017;          ;         ; do something; a long description; some secrets :-)
+            ;;;;;;
             22.03.2018; 03.05.2018; München; company3; event55; some text
-            01.07.2018; 03.08.2018; Hamburg; ; activity5; some text
-            01.07.2018; 03.08.2018; Hamburg; ; activity5; some text;
+            01.07.2018; 03.08.2018; Hamburg;         ; activity5; some text
+            01.07.2018; 03.08.2018; Hamburg;         ; activity5; some text;
+            ; ; ; ; ; ;
             08.06.2018; 17.06.2018; Hamburg; company4; activity42; some nice things to learn
             17.08.2018; 26.08.2018; Hamburg; company4; activity42;
             10.05.2016; 20.10.2016; Nürnberg; company1; activity42; this is a longer description \n with \n multiple \n lines \n ...
@@ -73,8 +79,9 @@
 
 
     <section id="timeline" class="full-view nav_toggle hidden">
-        <!-- <h1>Timeline</h1> -->
-        <svg version="1.1"
+        <h1>Timeline</h1>
+        <p>to do...</p>
+        <!-- <svg version="1.1"
             baseProfile="full"
             xmlns="http://www.w3.org/2000/svg"
             height="100%"
@@ -85,11 +92,11 @@
         >
             <g></g>
             <path d="M0 0 L200 0 L80 200 Z" />
-        </svg>
+        </svg> -->
     </section>
 
 
-    <section id="listview" class="nav_toggle ">
+    <section id="listview" class="nav_toggle hidden">
         <h1>List</h1>
 
     </section>
