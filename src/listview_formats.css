@@ -31,7 +31,7 @@
 
 #listview .myFormat th,
 #listview .myFormat td {
-	padding: 0.5rem;
+	padding: 0.1rem 0.5rem;
 }
 
 #listview .myFormat td:nth-child(1) {
