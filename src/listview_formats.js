@@ -40,7 +40,7 @@ export class TableContent {
         }
     }
 
-    append_entry_part(entry, td, part_name) {
+    append_entry_part(entry, td, part_name, add_linebreak=false) {
         // console.log(
         //     'typeof entry[part_name]',
         //     typeof entry[part_name],
@@ -50,6 +50,10 @@ export class TableContent {
         // );
         if (typeof entry[part_name] === 'object') {
             td.append(...entry[part_name]);
+            if (add_linebreak) {
+                const br = document.createElement('br');
+                td.append(br);
+            }
         }
         else {
             // if this is not a object we don't want to show it...
@@ -96,9 +100,7 @@ export class myFormat extends TableContent {
         const td = document.createElement('td');
         tr.append(td);
 
-        this.append_entry_part(entry, td, 'date_start');
-        const br = document.createElement('br');
-        td.append(br);
+        this.append_entry_part(entry, td, 'date_start', true);
         this.append_entry_part(entry, td, 'duration');
     }
 
@@ -106,9 +108,7 @@ export class myFormat extends TableContent {
         const td = document.createElement('td');
         tr.append(td);
 
-        this.append_entry_part(entry, td, 'company');
-        const br = document.createElement('br');
-        td.append(br);
+        this.append_entry_part(entry, td, 'company', true);
         this.append_entry_part(entry, td, 'place');
     }
 
