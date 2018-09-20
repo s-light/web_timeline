@@ -1,26 +1,3 @@
-
-#listview {
-
-}
-
-#listview table {
-    width: 100%;
-}
-
-
-#listview td {
-	padding: 0 1em;
-}
-
-#listview th {
-	padding-top: 0mm;
-    /* background-color: rgb(200, 200, 0) */
-}
-
-
-
-
-
 .sheet {
     display: block;
     background-color: rgb(255,255,255);

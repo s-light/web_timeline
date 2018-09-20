@@ -1,0 +1,55 @@
+
+#listview {
+
+}
+
+#listview table {
+    width: 100%;
+}
+
+
+#listview th,
+#listview td {
+	padding: 0.5rem;
+}
+
+#listview th {
+	padding-top: 0mm;
+    /* background-color: rgb(200, 200, 0) */
+    text-align: left;
+}
+
+
+
+
+/* myFormat */
+
+#listview table.myFormat {
+    width: 100%;
+}
+
+
+#listview .myFormat th,
+#listview .myFormat td {
+	padding: 0.5rem;
+}
+
+#listview .myFormat td:nth-child(1) {
+	white-space: nowrap;
+    font-size: 0.7em;
+}
+
+#listview .myFormat td:nth-child(2) {
+	white-space: nowrap;
+    font-size: 0.7em;
+}
+
+#listview .myFormat th {
+	padding-top: 0mm;
+    /* background-color: rgb(200, 200, 0) */
+}
+
+#listview .myFormat th:nth-child(1),
+#listview .myFormat th:nth-child(2) {
+    font-size: 0.8em;
+}

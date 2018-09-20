@@ -4,6 +4,8 @@ import './listview.css';
 
 // import moment from 'moment';
 
+import {TableContent, myFormat} from './listview_formats.js';
+
 
 export class ListView {
     constructor(data, main_el, data_update_event_name) {
@@ -14,6 +16,9 @@ export class ListView {
         this.data = data;
         this.main_el = main_el;
         console.log('this.main_el', this.main_el);
+
+        // this.tablecontent_creator = new TableContent(data);
+        this.tablecontent_creator = new myFormat(data);
 
         this.init();
         this.update();
@@ -52,16 +57,17 @@ export class ListView {
         // clean up.
         this.thead.remove();
         this.tbody.remove();
+        for (let current_class_name of this.table.classList.values()) {
+            console.log(current_class_name);
+            this.table.classList.remove(current_class_name);
+        }
         // recreate
+        this.table.classList.add(this.tablecontent_creator.get_css_class());
         this.thead = document.createElement('thead');
         this.table.append(this.thead);
         let tr = document.createElement('tr');
         this.thead.append(tr);
-        for (let part_name in this.data.entries[0]) {
-            const th = document.createElement('th');
-            th.append(part_name);
-            tr.append(th);
-        }
+        this.tablecontent_creator.append_headers(tr);
 
         this.tbody = document.createElement('tbody');
         this.table.append(this.tbody);
@@ -70,27 +76,7 @@ export class ListView {
             // console.log(entry);
             const tr = document.createElement('tr');
             this.tbody.append(tr);
-            for (let part_name in entry) {
-                const td = document.createElement('td');
-                tr.append(td);
-                // console.log(
-                //     'typeof entry[part_name]',
-                //     typeof entry[part_name],
-                //     // '\n',
-                //     // 'entry[part_name]',
-                //     entry[part_name]
-                // );
-                if (typeof entry[part_name] === 'object') {
-                    // console.log(
-                    //     '...entry[part_name]',
-                    //     ...entry[part_name]
-                    // );
-                    td.append(...entry[part_name]);
-                }
-                else {
-                    td.append(entry[part_name]);
-                }
-            }
+            this.tablecontent_creator.append_row_content(tr, entry);
 
         }
     }

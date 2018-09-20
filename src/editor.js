@@ -14,7 +14,7 @@ export class RawParser {
         this.text_input_el = text_input_el;
         this.data_json_el = data_json_el;
 
-        this.separator = '; ';
+        this.separator = ';';
         this.data_format = [];
         this.min_part_count_default = 3;
         this.min_part_count = this.min_part_count_default;
@@ -74,31 +74,53 @@ export class RawParser {
     }
 
     parseLine(line, index) {
+        console.info('parseLine');
         line = line.trim();
         // console.log('line: \'' + line + '\'');
         const parts = line.split(this.separator);
+        // console.log('parts', parts);
         if (parts.length >= this.min_part_count) {
             let entry = {};
             entry['line'] = index;
             for (let [index, part] of parts.entries()) {
                 this.parsePart(part, entry, index);
             }
-            this.data.entries.push(entry);
+            // console.log('parts.length', parts.length);
+            // check for missing parts
+            // const missing_parts_count = this.data_format.length - parts.length;
+            for (let i = parts.length; i < this.data_format.length; i++) {
+                this.parsePart('', entry, i);
+            }
+            // console.log('entry', entry);
+            // console.log('Object.keys(entry).length', Object.keys(entry).length);
+            if (Object.keys(entry).length >= this.min_part_count) {
+                this.data.entries.push(entry);
+            }
         }
     }
 
     parsePart(raw_text, entry, data_format_index) {
+        // console.log('raw_text: \'' + raw_text + '\'');
         raw_text = raw_text.trim();
-        // console.log('parseContent raw_text', raw_text);
-        // TODO
-        // implement different handling for different data formats
-        const data_format = this.data_format[data_format_index];
-        // start_date; end_date; place; company; activity; description
-        if (data_format.includes('date')) {
-            entry[data_format] = new PartDate(raw_text);
+        // console.log('raw_text: \'' + raw_text + '\'');
+        if (raw_text.length > 0) {
+            const sep = new RegExp('^' + this.separator + '+|' + this.separator + '+$', 'g');
+            raw_text = raw_text.replace(sep, '');
+            console.log('parseContent raw_text', raw_text);
+            let data_format = this.data_format[data_format_index];
+            if (!data_format) {
+                data_format = 'extended_' + data_format_index.toString();
+            }
+            // start_date; end_date; place; company; activity; description
+            if (data_format.includes('date')) {
+                entry[data_format] = new PartDate(raw_text);
+            }
+            else {
+                entry[data_format] = new PartText(raw_text);
+            }
         }
         else {
-            entry[data_format] = new PartText(raw_text);
+            // no content in part.
         }
     }
 
@@ -207,10 +229,10 @@ class PartDate {
         // super(text_raw, parse_format);
         this.raw = text_raw;
 
-        console.log('this.raw', this.raw);
+        // console.log('this.raw', this.raw);
         if (this.raw == 'now') {
             this.moment = new moment();
-            console.log('now!!', this.moment);
+            // console.log('now!!', this.moment);
         }
         else {
             this.moment = new moment(this.raw, parse_format);
