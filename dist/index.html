@@ -33,6 +33,7 @@
     <section id="editor" class="nav_toggle hidden">
         <h1>editor</h1>
         there are things to do here ;-)
+
         <!-- <div id="raw_data_format_input" class="input textline" contenteditable="true">
             date_start; date_end; title; description
         </div>
@@ -41,34 +42,45 @@
             01.03.2018; 03.05.2018; event2; some text <br>
             10.01.2018; 03.02.2018; event3; hello world <br>
         </div> -->
+
+
+        <input
+            id="raw_data_separator_input"
+            name="raw_data_separator_input"
+            type="text"
+            value="; "
+            placeholder="; "
+            disabled
+        />
         <input
             id="raw_data_format_input"
             name="raw_data_format_input"
             type="text"
-            value="date_start; date_end; place; company; activity; description"
+            value="date_start; date_end; weight; place; company; activity; description"
             placeholder="; separated names"
+            disabled
         />
         <textarea id="raw_data_input" name="raw_data_input" >
-            10.01.2017; 20.05.2017; Hamburg; school1; event1; this is a longer description\n and a second line
-            01.03.2018; 03.06.2018; Hamburg; school2; activity2; some text
-            01.03.2018; 03.03.2018; Hamburg; company with a really long name\nand manual line break ; activity2; some text
+10.01.2017; 20.05.2017; 1; Hamburg; school1; event1; this is a longer description\n and a second line
+01.03.2018; 03.06.2018; 2; Hamburg; school2; activity2; some text
+01.03.2018; 03.03.2018; 3; Hamburg; company with a really long name\nand manual line break ; activity2; some text
 
-            10.01.2018; 06.02.2018; Frankfurt; company1; event3;
-            ;         ;           ;          ;         ;       ;
-            10.01.2018; 05.02.2018; Nürnberg; private; activity1;
-            10.01.2018; 03.02.2018; Frankfurt; company2; event2; hello world
-            10.01.2018; 04.02.2018; Frankfurt; private; things; summer
+10.01.2018; 06.02.2018; 1; Frankfurt; company1; event3;
+;         ;           ;  ;          ;         ;       ;
+10.01.2018; 05.02.2018; 3; Nürnberg; private; activity1;
+10.01.2018; 03.02.2018; 42; Frankfurt; company2; event2; hello world
+10.01.2018; 04.02.2018; 4; Frankfurt; private; things; summer
 
-            01.03.2016; 31.05.2016; Frankfurt; company2; do something;
-            10.07.2017; 20.07.2017;          ;         ; do something; a long description; some secrets :-)
-            ;;;;;;
-            22.03.2018; 03.05.2018; München; company3; event55; some text
-            01.07.2018; 05.07.2018; Hamburg;         ; activity5; some text
-            01.07.2018; 03.07.2018; Hamburg;         ; activity5; some text;
-            ; ; ; ; ; ;
-            08.06.2018; 17.06.2018; Hamburg; company4; activity42; some nice things to learn
-            17.08.2018; 26.08.2018; Hamburg; company with a really long name; activity42;
-            10.05.2016; 20.10.2016; Nürnberg; company1; activity42; this is a longer description \n with \n multiple \n lines \n ...
+01.03.2016; 31.05.2016; 1; Frankfurt; company2; do something;
+10.07.2017; 20.07.2017; 3;          ;         ; do something; a long description; some secrets :-)
+;;;;;;;
+22.03.2018; 03.05.2018; 2; München; company3; event55; some text
+01.07.2018; 05.07.2018;  ; Hamburg;         ; activity5; some text
+01.07.2018; 03.07.2018; 3; Hamburg;         ; activity5; some text;
+; ; ; ; ; ; ;
+08.06.2018; 17.06.2018; 2; Hamburg; company4; activity42; some nice things to learn
+17.08.2018; 26.08.2018; 3; Hamburg; company with a really long name; activity42;
+10.05.2016; 20.10.2016; 2; Nürnberg; company1; activity42; this is a longer description \n with \n multiple \n lines \n ...
         </textarea>
         <div class="">
 
