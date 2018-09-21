@@ -16,7 +16,7 @@ export class RawParser {
 
         this.separator = ';';
         this.data_format = [];
-        this.min_part_count_default = 3;
+        this.min_part_count_default = 4;
         this.min_part_count = this.min_part_count_default;
 
         this.text_input_el.addEventListener(
@@ -128,6 +128,10 @@ export class RawParser {
         // console.info('refineData');
         // console.log(new PartDate(''));
         for (const entry of this.data.entries) {
+            // add missing weight
+            if ('weight' in entry === false) {
+                entry['weight'] = 42;
+            }
             // add missing date_end
             if ('date_end' in entry === false) {
                 entry['date_end'] = new PartDate('');
@@ -330,7 +334,7 @@ class PartDuration {
         //         {allDay: true}
         //     );
         // }
-        
+
         // console.log('date_end', date_end);
         if (!date_end.moment.isValid()) {
             date_end.moment = date_start.moment.clone().endOf('day');
