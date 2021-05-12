@@ -22,7 +22,8 @@ const my_plugins = [
         alwaysWriteToDisk: false,
     }),
     new HtmlWebpackHarddiskPlugin(),
-    new HtmlWebpackInlineSourcePlugin(),
+    // https://github.com/DustinJackson/html-webpack-inline-source-plugin/issues/79#issuecomment-670848584
+    new HtmlWebpackInlineSourcePlugin(HtmlWebpackPlugin),
     new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output
         // both options are optional

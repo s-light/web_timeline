@@ -6,7 +6,7 @@ view this as rendered github page at [s-light.github.io/web_timeline](https://s-
 
 view the actual application at [s-light.github.io/web_timeline/dist/index.html](https://s-light.github.io/web_timeline/dist/index.html)
 
-> currently the build is broken.
+> ~~currently the build is broken.~~
 > one of the dependencies is not maintained anymore.
 
 ## license
